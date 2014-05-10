@@ -1,0 +1,49 @@
+[tests]
+scripts.FullViewMenu.GalleryTest.testAddKeyWords = 50
+scripts.FullViewMenu.GalleryTest.testAddEvent = 50
+scripts.FullViewMenu.GalleryTest.testAddVenue = 50
+scripts.FullViewMenu.GalleryTest.testCheckDetail = 50
+scripts.FullViewMenu.GalleryTest.testCropThePhoto = 50
+scripts.FullView.GalleryTest.testSharePictureToMessaging = 50
+scripts.FullView.GalleryTest.testSharePictureToGmail = 50
+scripts.FullView.GalleryTest.testDeleteSingle = 50
+scripts.FullView.GalleryTest.testSlidePictures = 50
+scripts.FullViewVideo.GalleryTest.testPlayVideoFile = 50
+scripts.FullViewEdit.GalleryTest.testEditWithToneVintage = 50
+scripts.FullViewEdit.GalleryTest.testEditWithFrame2 = 50
+scripts.FullViewEdit.GalleryTest.testEditWithCropWithRotate = 50
+scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithExposure = 50
+scripts.FullViewEdit.GalleryTest.testEditWithTonePunchRedoAndUndo = 50
+scripts.FullViewEdit.GalleryTest.testEditWithTonePunchReset = 50
+scripts.FullViewEdit.GalleryTest.testEditWithTonePunchShowHistory = 50
+
+scripts.albumview.GalleryTest.testSwitchGalleryToCamera = 50
+scripts.albumview.GalleryTest.testAlbumsViewSwitchtoEvents = 50
+scripts.albumview.GalleryTest.testAlbumsViewSwitchtoPeople = 50
+scripts.albumview.GalleryTest.testSearchAlbum = 50
+scripts.albumview.GalleryTest.testEnterSocialGallerySettings = 50
+scripts.albumview.GalleryTest.testCheckAlbumDetail = 50
+scripts.albumview.GalleryTest.testDeleteAlbum = 50
+scripts.albumview.GalleryTest.testCancelDeleteAllAlbum = 50
+scripts.albumview.GalleryTest.testShareAlbumViaBluetooth = 50
+
+scripts.gridview.GalleryTest.testSelectDeselectAllAlbums = 50
+scripts.gridview.GalleryTest.testSlideshowAllInGridView = 50
+scripts.gridview.GalleryTest.testRotateAllInGridView = 50
+scripts.gridview.GalleryTest.testAnimateInGridView = 50
+scripts.gridview.GalleryTest.testCropInGridView = 50
+scripts.gridview.GalleryTest.testSetPictureAsContactPhotoInGridView = 50
+scripts.gridview.GalleryTest.testSetPictureAsWallpaperInGridView = 50
+
+scripts.burstview.GalleryTest.testDeleteBurstPics = 50
+scripts.burstview.GalleryTest.testAddVenue = 50
+scripts.burstview.GalleryTest.testAddEvent = 50
+scripts.burstview.GalleryTest.testAddKeyword = 50
+scripts.burstview.GalleryTest.testCheckDetails = 50
+scripts.burstview.GalleryTest.testSmallPlayBurstIconOfDissolve = 50
+scripts.burstview.GalleryTest.testSelectDeselectBurstPicsInEditView = 50
+scripts.burstview.GalleryTest.testDeleteBusrtPicsInEditView = 50
+scripts.burstview.GalleryTest.testSmallPlayBurstIconOfDissolveInEditView = 50
+scripts.burstview.GalleryTest.testRandomSelBusrtPicsExportToGalleryInEditView = 50
+scripts.burstview.GalleryTest.testRandomSelBusrtPicsDeleteUnMarkedInEditView = 50
+scripts.burstview.GalleryTest.testRandomSelectBusrtPicsConvertInEditView = 50
