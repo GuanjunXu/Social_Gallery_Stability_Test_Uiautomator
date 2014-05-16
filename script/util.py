@@ -78,9 +78,11 @@ class Util():
         d.start_activity(component = ACTIVITY_NAME)
         #Confirm gallery launch successfully by the icon on left-top corner
         assert d(packageName = PACKAGE_NAME).wait.exists(timeout = 3000), 'Gallery launch failed'      
+        d(description = 'Camera Roll, drawer open').click.wait()
+        d(text = 'Albums').click.wait()
 
     def selectFilter(self,galleryfilter):
-        d(resourceId = 'android:id/up').click.wait() #Tap on the left top corner
+        d(description = 'Camera Roll, drawer open').click.wait() #Tap on the left top corner
         #assert d(text = 'Albums').wait.exists(timeout = 2000)
         #Click the selected viewmode
         d(text = galleryfilter).click.wait()   
