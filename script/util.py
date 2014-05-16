@@ -99,8 +99,9 @@ class Util():
             imagesSelect = imagesSelect - 1    
 
     def showPopCard(self):
-        d.click(350,100).wait(1000) #The center of the top action bar
-        d.click(350,100).wait(1000) #Sometimes there is no response if tap here only once. Although it has poped up, tap here would do no thing for the case
+        d.click(350,100) #The center of the top action bar
+        time.sleep(2)
+        d.click(350,100) #Sometimes there is no response if tap here only once. Although it has poped up, tap here would do no thing for the case
         assert d(description = 'Share').wait.exists(timeout = 2000), 'Pop card does not display after tapping on the top bar twice'       
 
 #@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@#
