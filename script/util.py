@@ -77,9 +77,10 @@ class Util():
     def launchGallery(self):
         d.start_activity(component = ACTIVITY_NAME)
         #Confirm gallery launch successfully by the icon on left-top corner
-        assert d(packageName = PACKAGE_NAME).wait.exists(timeout = 3000), 'Gallery launch failed'      
-        d(description = 'Camera Roll, drawer open').click.wait()
-        d(text = 'Albums').click.wait()
+        assert d(packageName = PACKAGE_NAME).wait.exists(timeout = 3000), 'Gallery launch failed'
+        if d(description = 'Camera Roll, drawer open').wait.exists(timeout = 2000):
+            d(description = 'Camera Roll, drawer open').click.wait()
+            d(text = 'Albums').click.wait()
 
     def selectFilter(self,galleryfilter):
         d(description = 'Camera Roll, drawer open').click.wait() #Tap on the left top corner
