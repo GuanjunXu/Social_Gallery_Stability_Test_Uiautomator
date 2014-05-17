@@ -14,6 +14,9 @@ u = util.Util()
 PACKAGE_NAME = 'com.intel.android.gallery3d'
 ACTIVITY_NAME = PACKAGE_NAME + '/.app.Gallery'
 
+commands.getoutput('adb root')
+commands.getoutput('adb remount')
+
 class GalleryTest(unittest.TestCase):
     def setUp(self):
         super(GalleryTest,self).setUp()
