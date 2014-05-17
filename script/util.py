@@ -103,6 +103,7 @@ class Util():
             imagesSelect = imagesSelect - 1    
 
     def showPopCard(self):
+        time.sleep(2)
         d.click(350,100) #The center of the top action bar
         time.sleep(2)
         d.click(350,100) #Sometimes there is no response if tap here only once. Although it has poped up, tap here would do no thing for the case
@@ -253,6 +254,7 @@ class Util():
     def tapOnCenter(self):
         time.sleep(2)
         d.click(350,700)
+        time.sleep(2)
 
     def enterXView(self,viewmode):
         for i in range (0, ViewModeList.index(viewmode)):
