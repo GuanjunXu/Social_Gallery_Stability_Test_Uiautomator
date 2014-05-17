@@ -15,14 +15,14 @@ PACKAGE_NAME = 'com.intel.android.gallery3d'
 ACTIVITY_NAME = PACKAGE_NAME + '/.app.Gallery'
 
 #commands.getoutput('adb reboot')
-commands.getoutput('adb root')
-commands.getoutput('adb remount')
+#commands.getoutput('adb root')
+#commands.getoutput('adb remount')
 
 
 class GalleryTest(unittest.TestCase):
     def setUp(self):
         super(GalleryTest,self).setUp()
-        d.swipe(360,980,719,980)
+        #d.swipe(360,980,719,980)
         u._clearAllResource()
         u._confirmResourceExists()
         u.launchGallery()
