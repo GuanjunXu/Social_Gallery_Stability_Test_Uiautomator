@@ -77,8 +77,9 @@ class Util():
     def launchGallery(self):
         time.sleep(2)
         d.start_activity(component = ACTIVITY_NAME)
+        time.sleep(2)
         #Confirm gallery launch successfully by the icon on left-top corner
-        assert d(packageName = PACKAGE_NAME).wait.exists(timeout = 5000), 'Gallery launch failed'
+        assert d(packageName = PACKAGE_NAME).wait.exists(timeout = 3000), 'Gallery launch failed'
         if d(description = 'Camera Roll, drawer open').wait.exists(timeout = 2000):
             d(description = 'Camera Roll, drawer open').click.wait()
             d(text = 'Albums').click.wait()
