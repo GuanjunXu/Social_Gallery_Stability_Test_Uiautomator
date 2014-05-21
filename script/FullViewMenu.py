@@ -14,9 +14,15 @@ u = util.Util()
 PACKAGE_NAME = 'com.intel.android.gallery3d'
 ACTIVITY_NAME = PACKAGE_NAME + '/.app.Gallery'
 
+#commands.getoutput('adb reboot')
+#commands.getoutput('adb root')
+#commands.getoutput('adb remount')
+
+
 class GalleryTest(unittest.TestCase):
     def setUp(self):
         super(GalleryTest,self).setUp()
+        #d.swipe(360,980,719,980)
         u._clearAllResource()
         u._confirmResourceExists()
         u.launchGallery()
@@ -25,6 +31,7 @@ class GalleryTest(unittest.TestCase):
 
     def tearDown(self):
         super(GalleryTest,self).tearDown()
+        u.pressBack(4)
         u.pressBack(4)
 
     def testRotateLeftInSettingMenu(self):
@@ -90,7 +97,7 @@ class GalleryTest(unittest.TestCase):
 
     def testAddKeyWords(self):
         '''
-            Summary: Add keywords by setting meny 
+            Summary: Add keywords by setting menu 
             Steps:   1.Enter full view
                      2.Add keywords in settings bar
                      3.Click “+” to add new keywords to this photo
@@ -105,7 +112,7 @@ class GalleryTest(unittest.TestCase):
         
     def testAddEvent(self):
         '''
-            Summary: Add event by setting meny
+            Summary: Add event by setting menu
             Steps:   1.Enter full view
                      2.Add event in settings bar
         '''
@@ -118,7 +125,7 @@ class GalleryTest(unittest.TestCase):
 
     def testAddVenue(self):
         '''
-            Summary: Add venue by setting meny
+            Summary: Add venue by setting menu
             Steps:   1.Enter full view
                      2.Add venue in settings bar
         '''

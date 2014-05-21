@@ -40,8 +40,8 @@ class GalleryTest(unittest.TestCase):
 
     def tearDown(self):
         super(GalleryTest,self).tearDown()
-        self._pressBack(4)
-        u._clearAllResource()
+        u.pressBack(4)
+        #u._clearAllResource()
         time.sleep(2)
 ########################################################
 
@@ -612,5 +612,5 @@ class GalleryTest(unittest.TestCase):
 
 
     def _pressBack(self,touchtimes):
-        for i in range(1,touchtimes+1):
+        for i in range(0,touchtimes):
             d.press('back')         

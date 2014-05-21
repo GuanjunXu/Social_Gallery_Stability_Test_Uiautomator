@@ -14,7 +14,7 @@ class GalleryTest(unittest.TestCase):
         super(GalleryTest,self).setUp()
         # clear test resource
         #self.util = util.Util
-        #u._clearAllResource()
+        u._clearAllResource()
         # push test pics.
         u._confirmResourceExists()
         # launch gallery
@@ -255,7 +255,7 @@ class GalleryTest(unittest.TestCase):
         5. Exit SocialGallery app
         """
         # Step 2 
-        d.swipe(355,575,356,576)
+        self._holdOnTheCenter()
         # Step 3 + Step 4
         u.setMenuOptions('Details')
         # confirm pop up details dialog
@@ -301,7 +301,7 @@ class GalleryTest(unittest.TestCase):
         7. Exit SocialGallery app
         """
         # Step 2 
-        d.swipe(355,575,356,576)
+        self._holdOnTheCenter()
         # Step 3 + Step 4 + Step 5
         u.shareItem('Google+')
         # confirm enter Google+
@@ -323,7 +323,7 @@ class GalleryTest(unittest.TestCase):
         7. Exit SocialGallery app
         """
         # Step 2 
-        d.swipe(355,575,356,576)
+        self._holdOnTheCenter()
         # Step 3 + Step 4 + Step 5
         u.shareItem('Messaging')
         # confirm enter Messaging
@@ -346,7 +346,7 @@ class GalleryTest(unittest.TestCase):
         7.Exit SocialGallery app
         """
         # Step 2 
-        d.swipe(355,575,356,576)
+        self._holdOnTheCenter()
         # Step 3 + Step 4 + Step 5
         u.shareItem('Picasa')
         # confirm enter Picasa
@@ -366,7 +366,7 @@ class GalleryTest(unittest.TestCase):
         7.Exit SocialGallery app
         """
         # Step 2 
-        d.swipe(355,575,356,576)
+        self._holdOnTheCenter()
         # Step 3 + Step 4 + Step 5
         u.shareItem('Gmail')
         # confirm enter Gamil
@@ -386,7 +386,7 @@ class GalleryTest(unittest.TestCase):
         7.Exit SocialGallery app
         """
         # Step 2 
-        d.swipe(355,575,356,576)
+        self._holdOnTheCenter()
         # Step 3 + Step 4 + Step 5
         u.shareItem('Drive')
         # confirm enter Driver
@@ -408,7 +408,7 @@ class GalleryTest(unittest.TestCase):
         u._prepareVideo()
         time.sleep(2)
         # Step 2 
-        d.swipe(355,575,356,576)
+        self._holdOnTheCenter()
         # Step 3 + Step 4 + Step 5
         u.shareItem('YouTube')
         # confirm enter YouTube
@@ -428,7 +428,7 @@ class GalleryTest(unittest.TestCase):
         7.Exit SocialGallery app
         """
         # Step 2 
-        d.swipe(355,575,356,576)
+        self._holdOnTheCenter()
         # Step 3 + Step 4 + Step 5
         u.shareItem('Facebook')
         # confirm enter Facebook
@@ -448,7 +448,7 @@ class GalleryTest(unittest.TestCase):
         7.Exit SocialGallery app
         """
         # Step 2 
-        d.swipe(355,575,356,576)
+        self._holdOnTheCenter()
         # Step 3 + Step 4 + Step 5
         u.shareItem('Bluetooth')
         # confirm enter Bluetooth
@@ -466,7 +466,7 @@ class GalleryTest(unittest.TestCase):
         5. Exit SocialGallery app
         """
         # Step 2 
-        d.swipe(355,575,356,576)
+        self._holdOnTheCenter()
         # Step 3 + Step 4
         u.deleteItem('Delete')
         time.sleep(2)
@@ -487,7 +487,8 @@ class GalleryTest(unittest.TestCase):
         5. Exit SocialGallery app
         """
         # Step 2 
-        d.swipe(355,575,356,576)
+        self._holdOnTheCenter()
+        assert d(text = '1 selected').wait.exists(timeout = 2000), 'The center album has not been selected'
         # Step 3 + Step 4
         u.deleteItem('Cancel')
         # confirm Delete complete
@@ -509,7 +510,8 @@ class GalleryTest(unittest.TestCase):
         7. Exit SocialGallery app
         """
         # Step 2
-        d.swipe(355,575,356,576)
+        self._holdOnTheCenter()
+        assert d(text = '1 selected').wait.exists(timeout = 2000), 'The center album has not been selected'
         # Step 3
         d(text = '1 selected').click()
         # Step 4
@@ -535,7 +537,7 @@ class GalleryTest(unittest.TestCase):
         7. Exit SocialGallery app
         """
         # Step 2 + Step 3
-        d.swipe(355,575,356,576)
+        self._holdOnTheCenter()
         d(text = '1 selected').click()        
         # Step 4
         d(text = 'Select all').click()
@@ -547,4 +549,9 @@ class GalleryTest(unittest.TestCase):
         assert d(description = 'Switch to camera').wait.exists
 
     def _longtouchscreencenter(self):
+        time.sleep(2)
         d.swipe(350,700,351,701)
+
+    def _holdOnTheCenter(self):
+        time.sleep(2)
+        d.swipe(355,575,356,576)
