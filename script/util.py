@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from devicewrapper.android import device as d
+from uiautomatorplug.android import device as d
 from uiautomator import device as dd
 import unittest
 import time
