@@ -10,6 +10,9 @@ import random
 import math
 import os
 
+d.watcher("FC_WC").when(textContains = 'Unfortunately')\
+                  .click(text = 'OK')
+
 PACKAGE_NAME = 'com.intel.android.gallery3d'
 ACTIVITY_NAME = PACKAGE_NAME + '/.app.Gallery'
 PATH = os.getcwd()
