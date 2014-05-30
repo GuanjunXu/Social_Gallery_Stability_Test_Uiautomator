@@ -12,6 +12,12 @@ class GalleryTest(unittest.TestCase):
 
     def setUp(self):
         super(GalleryTest,self).setUp()
+        #Add on May 30th due to device always reboot by itself
+        if d(text = 'Charged').wait.exists:
+            commands.getoutput('adb root')
+            time.sleep(5)
+            commands.getoutput('adb remount')
+            d.swipe(360,980,719,980)
         # clear test resource
         #self.util = util.Util
         u._clearAllResource()
