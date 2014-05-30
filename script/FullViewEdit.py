@@ -28,7 +28,7 @@ XITEM     = XUNIT / 2
 class GalleryTest(unittest.TestCase):
     def setUp(self):
         super(GalleryTest,self).setUp()
-        #Add on May 30th due to device always reboot by itself
+        #Add on May 26th due to device always reboot by itself
         if d(text = 'Charged').wait.exists:
             commands.getoutput('adb root')
             time.sleep(5)
@@ -673,7 +673,7 @@ class GalleryTest(unittest.TestCase):
             d(resourceId = 'com.intel.android.gallery3d:id/%sButton'%suboption).click.wait()
         else:
             if suboption < 6:
-                d(index = suboption-1,focusable = 'false',clickable = 'true').click.wait()
+                d()[17 + suboption - 1].click.wait()
                 #d.click(XITEM + XUNIT * (suboption - 1), YSUB)
             elif suboption == 11:
                 d.swipe(XMAX-1, YSUB, 0, YSUB, 5) #Swipe to the end
