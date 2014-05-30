@@ -128,6 +128,11 @@ class GalleryTest(unittest.TestCase):
         d(text = 'Enter new event').set_text('NewEvent')
         self._tapOnDoneButton()
         assert d(text = 'NewEvent',resourceId = 'com.intel.android.gallery3d:id/event_text').wait.exists(timeout = 2000)
+        #Delete ...
+        d(resourceId = 'com.intel.android.gallery3d:id/event_edit').click.wait()
+        d(resourceId = 'com.intel.android.gallery3d:id/search_text_clear').click.wait()
+        assert d(text = 'Enter new event').wait.exists(timeout = 2000), "fail to delete existing event"
+        self._tapOnDoneButton()
 
     def testAddVenue(self):
         '''
@@ -141,6 +146,11 @@ class GalleryTest(unittest.TestCase):
         d(text = 'Enter new venue').set_text('NewVenue')
         self._tapOnDoneButton()
         assert d(text = 'NewVenue',resourceId = 'com.intel.android.gallery3d:id/venue_text').wait.exists(timeout = 2000)
+        #Delete ...
+        d(resourceId = 'com.intel.android.gallery3d:id/venue_edit').click.wait()
+        d(resourceId = 'com.intel.android.gallery3d:id/search_text_clear').click.wait()
+        assert d(text = 'Enter new venue').wait.exists(timeout = 2000), "fail to delete existing venue"
+        self._tapOnDoneButton()
 
     def testSetPicAsContact(self):
         '''
