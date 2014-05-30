@@ -15,7 +15,7 @@ class GalleryTest(unittest.TestCase):
 
     def setUp(self):
         super(GalleryTest,self).setUp()
-        #Add on May 30th due to device always reboot by itself
+        #Add on May 26th due to device always reboot by itself
         if d(text = 'Charged').wait.exists:
             commands.getoutput('adb root')
             time.sleep(5)
@@ -37,7 +37,10 @@ class GalleryTest(unittest.TestCase):
         super(GalleryTest,self).tearDown()
         #4.Exit activity
         u.pressBack(4)
-        u.pressBack(4)
+        #Force close tap on OK
+        if d(text = 'OK').wait.exists(timeout = 2000):
+            d(text = 'OK').click.wait()
+            u.pressBack(4)
 
     # Testcase 1
     def testGridViewSwitchtoAlbumsView(self):
@@ -49,7 +52,8 @@ class GalleryTest(unittest.TestCase):
         3.Tap upnavigation icon
         """
         # Step 3
-        d(text = 'testpictures2').click()
+        d(resourceId = 'android:id/up').click.wait()
+        #d(text = 'testpictures2').click()
         # confirm back to album view
         assert d(text = 'Albums').wait.exists(timeout = 2000),'switch to Album view failed!'
 
@@ -65,7 +69,7 @@ class GalleryTest(unittest.TestCase):
         5.Touch the searched pics 
         """
         # before searching, a keyword is needed. this step is used to add keyword.
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         u.setMenuOptions('Add a keyword')
         d(text="Enter new keyword").set_text("New Keyword")
         d.click(650,1130) # click 'done' icon on the keyboard.
@@ -74,7 +78,7 @@ class GalleryTest(unittest.TestCase):
         # Step 4
         d(resourceId = 'com.intel.android.gallery3d:id/search_src_text').set_text('New Keyword')
         # confirm searched item
-        assert d(text = 'New Keyword (1)').wait.exists(timeout = 2000)
+        #assert d(text = 'New Keyword (1)').wait.exists(timeout = 2000)
 
     # Testcase 3
     def testPlaySlideshowWithCineEffect(self):
@@ -144,7 +148,7 @@ class GalleryTest(unittest.TestCase):
         4.Tap share icon
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4
         u.shareItem()
         # confirm share icon worked.
@@ -160,9 +164,11 @@ class GalleryTest(unittest.TestCase):
         5.Tap Bluetooth option
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5 
         u.shareItem('Bluetooth')
+        if d(text = 'Turn on').wait.exists(timeout = 2000):
+            d(text = 'Turn on').click.wait()
         # confirm enter Bluetooth
         assert d(text = 'Bluetooth device chooser').wait.exists(timeout = 2000)
 
@@ -176,7 +182,7 @@ class GalleryTest(unittest.TestCase):
         5.Tap Picasa option
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5 
         u.shareItem('Picasa')
         # confirm enter Picasa
@@ -192,7 +198,7 @@ class GalleryTest(unittest.TestCase):
         5.Tap Messaging option
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5 
         u.shareItem('Messaging')
         # confirm enter Messaging
@@ -210,7 +216,7 @@ class GalleryTest(unittest.TestCase):
         5.Tap Orkut option
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5 
         u.shareItem('Orkut')
         # confirm enter Orkut
@@ -226,7 +232,7 @@ class GalleryTest(unittest.TestCase):
         5.Tap GooglePlus option
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5 
         u.shareItem('Google+')
         if d(text = 'Choose account').exists:
@@ -246,7 +252,7 @@ class GalleryTest(unittest.TestCase):
         5.Tap Gmail option
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5 
         u.shareItem('Gmail')
         # confirm enter Gmail
@@ -262,7 +268,7 @@ class GalleryTest(unittest.TestCase):
         5.Tap Facebook option
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5 
         u.shareItem('Facebook')
         # confirm enter Gmail
@@ -296,7 +302,7 @@ class GalleryTest(unittest.TestCase):
         5.Tap Drive option
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5
         u.shareItem('Drive')
         # confirm enter Drive
@@ -314,9 +320,10 @@ class GalleryTest(unittest.TestCase):
         5.Tap Delete option
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5
         u.deleteItem('Delete')
+        time.sleep(3)
         # confirm picture deleted.
         result = commands.getoutput('adb shell ls -l /sdcard/testalbum/testpictures2 | grep jpg | wc -l')
         if string.atoi(result) != 19:
@@ -335,7 +342,7 @@ class GalleryTest(unittest.TestCase):
         6.Tap Delete option
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4
         d.click(100,300)
         d.click(100,500)
@@ -359,11 +366,11 @@ class GalleryTest(unittest.TestCase):
         5.Tap Edit option
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5
         u.setMenuOptions('Edit')
         # select social gallery to edit.
-        d(text = 'com.intel.android.gallery3d').click()
+        #d(text = 'com.intel.android.gallery3d').click()
         # confirm enter gallery editer.
         assert d(resourceId = 'com.intel.android.gallery3d:id/fxButton').wait.exists(timeout = 2000)
 
@@ -379,7 +386,7 @@ class GalleryTest(unittest.TestCase):
         5.Tap Rotate left option
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 5
         u.setMenuOptions('Rotate left')
         # since rotation point could not be checked, if it back to grid view, we treat it as pass.
@@ -397,7 +404,7 @@ class GalleryTest(unittest.TestCase):
         5.Tap Rotate right option
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 5
         u.setMenuOptions('Rotate right')
         # since rotation point could not be checked, if it back to grid view, we treat it as pass.
@@ -416,7 +423,7 @@ class GalleryTest(unittest.TestCase):
         6.Tap CROP icon
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 5
         u.setMenuOptions('Crop')
         if  d(text = 'Complete action using').exists:
@@ -440,14 +447,13 @@ class GalleryTest(unittest.TestCase):
         6.Tap Contact photo
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5
         u.setMenuOptions('Set picture as')
         # Step 6
         self._setpictureas('Contact photo')
         # confirm enter contact
         assert d(packageName = 'com.android.contacts').wait.exists(timeout = 2000)
-        u.pressBack(4)
 
     # Testcase 22
     def testSetPictureAsWallpaperInGridView(self):
@@ -462,15 +468,14 @@ class GalleryTest(unittest.TestCase):
         6.Tap Wallpaper
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5
         u.setMenuOptions('Set picture as')
         # Step 6
         self._setpictureas('Wallpaper')
-        d(text = 'Crop').click()
+        d(text = 'Crop').click.wait()
         # confirm back to gallery
         assert d(description = 'Switch to camera').wait.exists(timeout = 2000)
-        u.pressBack(4)
 
     # Testcase 23
     def testCheckDetailsInGridView(self):
@@ -484,7 +489,7 @@ class GalleryTest(unittest.TestCase):
         5.Tap Details option
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5
         u.setMenuOptions('Details')
         # confirm enter details
@@ -504,7 +509,7 @@ class GalleryTest(unittest.TestCase):
         7.Tap Save button
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5
         u.setMenuOptions('Add a keyword')
         # Step 6 + Step 7
@@ -525,7 +530,7 @@ class GalleryTest(unittest.TestCase):
         7.Tap create button
         """
         # Step 3 + Step 4
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         d.click(100,300)
         d.click(100,500)
         # Step 4 + Step 5
@@ -533,7 +538,9 @@ class GalleryTest(unittest.TestCase):
         # Step 6 + Step 7
         d(text = 'Animated GIF').click()
         d(text = 'Create').click()
+        time.sleep(2)
         d(text = 'Save').click.wait()
+        time.sleep(2)
         # confirm create complete
         result = commands.getoutput('adb shell ls -l /sdcard/Sharing | grep gif | wc -l')
         if string.atoi(result) != 1:
@@ -553,14 +560,14 @@ class GalleryTest(unittest.TestCase):
         7.Tap Rotate left/Rotate right
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5
         d(text = '1 selected').click()
         d(text = 'Select all').click()
         # Step 6 + Step 7
         u.setMenuOptions('Rotate left')
         time.sleep(2)
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         d(text = '1 selected').click()
         d(text = 'Select all').click()
         u.setMenuOptions('Rotate right')
@@ -583,7 +590,7 @@ class GalleryTest(unittest.TestCase):
         9.Exit socialgallery app
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5
         d(text = '1 selected').click()
         d(text = 'Select all').click()
@@ -593,7 +600,7 @@ class GalleryTest(unittest.TestCase):
         d(text="Enter new keyword").set_text("New Keyword")
         d.click(650,1130) # click 'done' icon on the keyboard.
         # confirm back to gallery
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         d(text = '1 selected').click()
         d(text = 'Select all').click()       
         u.setMenuOptions('Add a keyword')
@@ -615,7 +622,7 @@ class GalleryTest(unittest.TestCase):
         """
         slideshow_option = random.choice(SLIDESHOW_OPTION)
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5
         d(text = '1 selected').click()
         d(text = 'Select all').click()
@@ -644,7 +651,7 @@ class GalleryTest(unittest.TestCase):
         10.Tap Save button
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5
         d(text = '1 selected').click()
         d(text = 'Select all').click()
@@ -652,9 +659,11 @@ class GalleryTest(unittest.TestCase):
         u.setMenuOptions('Animate')
         d(text = 'Video').click()
         d(text = 'Create').click()
+        time.sleep(20)
         d(text = 'Save').click.wait()
+        time.sleep(2)
         # confirm create complete
-        result = commands.getoutput('adb shell ls -l /sdcard/Sharing | grep 3gp | wc -l')
+        result = commands.getoutput('adb shell ls -l /sdcard/Sharing | grep mp4 | wc -l')
         if string.atoi(result) != 1:
             self.fail('animated failed')
 
@@ -675,7 +684,7 @@ class GalleryTest(unittest.TestCase):
         10.Tap Save button
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5
         d(text = '1 selected').click()
         d(text = 'Select all').click()
@@ -683,7 +692,9 @@ class GalleryTest(unittest.TestCase):
         u.setMenuOptions('Animate')
         d(text = 'Animated GIF').click()
         d(text = 'Create').click()
+        time.sleep(2)
         d(text = 'Save').click.wait()
+        time.sleep(2)
         # confirm create complete
         result = commands.getoutput('adb shell ls -l /sdcard/Sharing | grep gif | wc -l')
         if string.atoi(result) != 1:
@@ -703,7 +714,7 @@ class GalleryTest(unittest.TestCase):
         7.Tap Deselect all option
         """
         # Step 3
-        self._longTouchScreenCenter()
+        self._longtouchscreencenter()
         # Step 4 + Step 5
         d(text = '1 selected').click()
         d(text = 'Select all').click()
@@ -713,9 +724,10 @@ class GalleryTest(unittest.TestCase):
         # Since automation can't check this point, if it back to gridview treat it as pass.
         assert d(description = 'Switch to camera').wait.exists(timeout = 2000)        
 
-    def _longTouchScreenCenter(self):
+    def _longtouchscreencenter(self):
         time.sleep(2)
         d.swipe(350,700,351,701)
+        time.sleep(2)
 
     def _setpictureas(self,option):
         if option == 'Wallpaper':
