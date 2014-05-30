@@ -300,6 +300,7 @@ class Util():
     #Add on May 6th
     def setMenuOptions(self,setoption = None):
         d(description = 'More options').click.wait()
+        time.sleep(2)
         d(text = setoption).click.wait()
         if d(text = 'Choose an action').wait.exists(timeout = 2000):
             d(text = 'com.intel.android.gallery3d').click.wait()
