@@ -73,6 +73,7 @@ class GalleryTest(unittest.TestCase):
                      4.Click crop
         '''
         u.setMenuOptions('Crop')
+        time.sleep(2)
         assert d(text = 'Crop picture').wait.exists(timeout = 3000)
         d(text = 'Crop').click.wait()
         assert d(text = 'Crop').wait.gone(timeout = 2000)
@@ -86,6 +87,7 @@ class GalleryTest(unittest.TestCase):
                      4.Click cancel
         '''
         u.setMenuOptions('Crop')
+        time.sleep(2)
         assert d(text = 'Crop picture').wait.exists(timeout = 3000)
         d(text = 'Cancel').click.wait()
         assert d(text = 'Crop').wait.gone(timeout = 2000)
