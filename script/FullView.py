@@ -17,7 +17,7 @@ ACTIVITY_NAME = PACKAGE_NAME + '/.app.Gallery'
 class GalleryTest(unittest.TestCase):
     def setUp(self):
         super(GalleryTest,self).setUp()
-        #Add on May 30th due to device always reboot by itself
+        #Add on May 26th due to device always reboot by itself
         if d(text = 'Charged').wait.exists:
             commands.getoutput('adb root')
             time.sleep(5)
@@ -123,10 +123,10 @@ class GalleryTest(unittest.TestCase):
         '''
         u.shareItem('Google+')
         if d(text = 'Choose account').wait.exists(timeout = 2000):
-            d(resourceId = 'com.google.android.apps.plus:id/avatar').click.wait()
+            u.tapOnCenter()
         assert d(text = 'Share').wait.exists(timeout = 2000)
         #Discard it.
-        d.press('back')
+        u.pressBack(1)
         d(text = 'Yes').click.wait()
 
     def testSharePictureToGmail(self):
@@ -141,10 +141,10 @@ class GalleryTest(unittest.TestCase):
 
     def testSharePictureToDrive(self):
         '''
-            Summary: Share 1 picture in Gmail
+            Summary: Share 1 picture in Drive
             Steps:   1.Enter full view
                      2.Click share icon
-                     3.Click Gmail icon
+                     3.Click Drive icon
         '''
         u.shareItem('Drive')
         assert d(text = 'Upload to Drive').wait.exists(timeout = 2000)
@@ -189,5 +189,5 @@ class GalleryTest(unittest.TestCase):
         #Swipe screen from left to right
         d.swipe(60,300,650,300,2)
         time.sleep(2)
-
-    
+        
+        
