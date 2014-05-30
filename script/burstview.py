@@ -30,15 +30,15 @@ ACTIVITY_NAME = PACKAGE_NAME + '.app.Gallery'
 class GalleryTest(unittest.TestCase):
     def setUp(self):
         super(GalleryTest,self).setUp()
-        #Add on May 30th due to device always reboot by itself
+        #Add on May 26th due to device always reboot by itself
         if d(text = 'Charged').wait.exists:
             commands.getoutput('adb root')
             time.sleep(5)
             commands.getoutput('adb remount')
             d.swipe(360,980,719,980)
         u._clearAllResource()
-        u.launchGallery()
         u._checkBurstResource()
+        u.launchGallery()
         self._enterBurstView()
 
 
@@ -46,8 +46,8 @@ class GalleryTest(unittest.TestCase):
 
     def tearDown(self):
         super(GalleryTest,self).tearDown()
-        u.pressBack(4)
-        #u._clearAllResource()
+        self._pressBack(4)
+        u._clearAllResource()
         time.sleep(2)
 ########################################################
 
@@ -132,7 +132,7 @@ class GalleryTest(unittest.TestCase):
 # Test case 6
     def testMenuKeyOfRotateRight(self):
         """
-        Summary:This case test rotate left burst pictures by menu key in burst view.
+        Summary:This case test rotate right burst pictures by menu key in burst view.
         Precondition: There are burst pictures in sdcard
         Steps:
           1. Launch Intel gallery and enter to burst view
@@ -144,7 +144,7 @@ class GalleryTest(unittest.TestCase):
 # Test case 7
     def testMenuKeyOfSync(self):
         """
-        Summary:This case test rotate left burst pictures by menu key in burst view.
+        Summary:This case test sync pictures via menu key
         Precondition: There are burst pictures in sdcard
         Steps:
           1. Launch Intel gallery and enter to burst view
@@ -157,7 +157,7 @@ class GalleryTest(unittest.TestCase):
 # Test case 8
     def testMenuKeyOfConvert(self):
         """
-        Summary:This case test rotate left burst pictures by menu key in burst view.
+        Summary:This case test convert pictures via menu key
         Precondition: There are burst pictures in sdcard
         Steps:
           1. Launch Intel gallery and enter to burst view
@@ -175,7 +175,7 @@ class GalleryTest(unittest.TestCase):
 # Test csae 9
     def testAddVenue(self):
         """
-        Summary:This case test rotate left burst pictures by menu key in burst view.
+        Summary:This case test add venue
         Precondition: There are burst pictures in sdcard
         Steps:
           1. Launch Intel gallery and enter to burst view
@@ -188,7 +188,7 @@ class GalleryTest(unittest.TestCase):
 # Test case 10
     def testAddEvent(self):
         """
-        Summary:This case test rotate left burst pictures by menu key in burst view.
+        Summary:This case test add event
         Precondition: There are burst pictures in sdcard
         Steps:
           1. Launch Intel gallery and enter to burst view
@@ -201,7 +201,7 @@ class GalleryTest(unittest.TestCase):
 # Test case 11
     def testAddKeyword(self):
         """
-        Summary:This case test rotate left burst pictures by menu key in burst view.
+        Summary:This case test add keyword
         Precondition: There are burst pictures in sdcard
         Steps:
           1. Launch Intel gallery and enter to burst view
@@ -214,7 +214,7 @@ class GalleryTest(unittest.TestCase):
 # Test case 12
     def testCheckDetails(self):
         """
-        Summary:This case test rotate left burst pictures by menu key in burst view.
+        Summary:This case test check details
         Precondition: There are burst pictures in sdcard
         Steps:
           1. Launch Intel gallery and enter to burst view
@@ -618,5 +618,5 @@ class GalleryTest(unittest.TestCase):
 
 
     def _pressBack(self,touchtimes):
-        for i in range(0,touchtimes):
+        for i in range(1,touchtimes+1):
             d.press('back')         
