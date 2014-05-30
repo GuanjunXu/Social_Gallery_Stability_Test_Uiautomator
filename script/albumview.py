@@ -12,7 +12,7 @@ class GalleryTest(unittest.TestCase):
 
     def setUp(self):
         super(GalleryTest,self).setUp()
-        #Add on May 30th due to device always reboot by itself
+        #Add on May 26th due to device always reboot by itself
         if d(text = 'Charged').wait.exists:
             commands.getoutput('adb root')
             time.sleep(5)
@@ -224,6 +224,11 @@ class GalleryTest(unittest.TestCase):
         6. Exit SocialGallery app
         """
         # Step 2 + Step 3
+        d.press('menu')
+        if d(text = 'Sort by name, Z-A').wait.exists(timeout = 2000):
+            d(text = 'Sort by name, Z-A').click.wait()
+        else:
+            d.press('menu')
         u.setMenuOptions('Sort by name, A-Z')
         assert d(description = 'Switch to camera').wait.exists
         # step 4 + step 5
@@ -266,7 +271,7 @@ class GalleryTest(unittest.TestCase):
         5. Exit SocialGallery app
         """
         # Step 2 
-        self._holdOnTheCenter()
+        d.swipe(355,575,356,576)
         # Step 3 + Step 4
         u.setMenuOptions('Details')
         # confirm pop up details dialog
@@ -312,9 +317,11 @@ class GalleryTest(unittest.TestCase):
         7. Exit SocialGallery app
         """
         # Step 2 
-        self._holdOnTheCenter()
+        d.swipe(355,575,356,576)
         # Step 3 + Step 4 + Step 5
         u.shareItem('Google+')
+        if d(text = 'Choose account').wait.exists(timeout = 2000):
+            u.tapOnCenter()
         # confirm enter Google+
         assert d(packageName = 'com.google.android.apps.plus').wait.exists(timeout = 2000)
         u.pressBack(1)
@@ -334,7 +341,7 @@ class GalleryTest(unittest.TestCase):
         7. Exit SocialGallery app
         """
         # Step 2 
-        self._holdOnTheCenter()
+        d.swipe(355,575,356,576)
         # Step 3 + Step 4 + Step 5
         u.shareItem('Messaging')
         # confirm enter Messaging
@@ -357,7 +364,7 @@ class GalleryTest(unittest.TestCase):
         7.Exit SocialGallery app
         """
         # Step 2 
-        self._holdOnTheCenter()
+        d.swipe(355,575,356,576)
         # Step 3 + Step 4 + Step 5
         u.shareItem('Picasa')
         # confirm enter Picasa
@@ -377,11 +384,11 @@ class GalleryTest(unittest.TestCase):
         7.Exit SocialGallery app
         """
         # Step 2 
-        self._holdOnTheCenter()
+        d.swipe(355,575,356,576)
         # Step 3 + Step 4 + Step 5
         u.shareItem('Gmail')
         # confirm enter Gamil
-        assert d(text = 'Gmail').wait.exists(timeout = 2000)
+        assert d(text = 'Subject').wait.exists(timeout = 2000)
 
     # Testcase 19
     def testShareAlbumViaDrive(self):
@@ -397,7 +404,7 @@ class GalleryTest(unittest.TestCase):
         7.Exit SocialGallery app
         """
         # Step 2 
-        self._holdOnTheCenter()
+        d.swipe(355,575,356,576)
         # Step 3 + Step 4 + Step 5
         u.shareItem('Drive')
         # confirm enter Driver
@@ -419,7 +426,7 @@ class GalleryTest(unittest.TestCase):
         u._prepareVideo()
         time.sleep(2)
         # Step 2 
-        self._holdOnTheCenter()
+        d.swipe(355,575,356,576)
         # Step 3 + Step 4 + Step 5
         u.shareItem('YouTube')
         # confirm enter YouTube
@@ -439,7 +446,7 @@ class GalleryTest(unittest.TestCase):
         7.Exit SocialGallery app
         """
         # Step 2 
-        self._holdOnTheCenter()
+        d.swipe(355,575,356,576)
         # Step 3 + Step 4 + Step 5
         u.shareItem('Facebook')
         # confirm enter Facebook
@@ -459,11 +466,13 @@ class GalleryTest(unittest.TestCase):
         7.Exit SocialGallery app
         """
         # Step 2 
-        self._holdOnTheCenter()
+        d.swipe(355,575,356,576)
         # Step 3 + Step 4 + Step 5
         u.shareItem('Bluetooth')
+        if d(text = 'Turn on').wait.exists(timeout = 2000):
+            d(text = 'Turn on').click.wait()
         # confirm enter Bluetooth
-        assert d(text = 'Bluetooth device chooser').wait.exists(timeout = 2000)
+        assert d(text = 'Bluetooth device chooser').wait.exists(timeout = 3000)
 
     # Testcase 23
     def testDeleteAlbum(self):
@@ -477,7 +486,7 @@ class GalleryTest(unittest.TestCase):
         5. Exit SocialGallery app
         """
         # Step 2 
-        self._holdOnTheCenter()
+        d.swipe(355,575,356,576)
         # Step 3 + Step 4
         u.deleteItem('Delete')
         time.sleep(2)
@@ -498,8 +507,7 @@ class GalleryTest(unittest.TestCase):
         5. Exit SocialGallery app
         """
         # Step 2 
-        self._holdOnTheCenter()
-        assert d(text = '1 selected').wait.exists(timeout = 2000), 'The center album has not been selected'
+        d.swipe(355,575,356,576)
         # Step 3 + Step 4
         u.deleteItem('Cancel')
         # confirm Delete complete
@@ -521,8 +529,7 @@ class GalleryTest(unittest.TestCase):
         7. Exit SocialGallery app
         """
         # Step 2
-        self._holdOnTheCenter()
-        assert d(text = '1 selected').wait.exists(timeout = 2000), 'The center album has not been selected'
+        d.swipe(355,575,356,576)
         # Step 3
         d(text = '1 selected').click()
         # Step 4
@@ -548,21 +555,49 @@ class GalleryTest(unittest.TestCase):
         7. Exit SocialGallery app
         """
         # Step 2 + Step 3
-        self._holdOnTheCenter()
+        d.swipe(355,575,356,576)
         d(text = '1 selected').click()        
         # Step 4
         d(text = 'Select all').click()
         assert d(description = 'Switch to camera').wait.exists
         # Step 5
-        d(text = '2 selected').click()
+        #d(text = '2 selected').click()
+        d(textContains = 'selected').click()
         # Step 6
         d(text = 'Deselect all').click()
         assert d(description = 'Switch to camera').wait.exists
 
+    # Testcase 27 - add on May 26th
+    def testAlbumsViewSwitchtoCameraRoll(self):
+        """
+        Summary:Switch Albums to Camera Roll.
+        Step:
+        1. Launch SocialGallery app
+        2. Tap the switch filter
+        3. Tap Camera Roll filter
+        4. Exit SocialGallery app
+        """
+        # Step 2 + Step 3
+        u.selectFilter('Camera Roll')
+        # confirm switch to Places
+        assert d(text = 'Camera Roll').wait.exists(timeout = 2000),'switch to Camera Roll failed!'
+
+    # Testcase 28 - add on May 26th
+    def testAlbumsViewSwitchtoMedia(self):
+        """
+        Summary:Switch Albums to Media.
+        Step:
+        1. Launch SocialGallery app
+        2. Tap the switch filter
+        3. Tap Media filter
+        4. Exit SocialGallery app
+        """
+        # Step 2 + Step 3
+        u.selectFilter('Media')
+        # confirm switch to Places
+        assert d(text = 'Media').wait.exists(timeout = 2000),'switch to Media failed!'
+
     def _longtouchscreencenter(self):
         time.sleep(2)
         d.swipe(350,700,351,701)
-
-    def _holdOnTheCenter(self):
         time.sleep(2)
-        d.swipe(355,575,356,576)
