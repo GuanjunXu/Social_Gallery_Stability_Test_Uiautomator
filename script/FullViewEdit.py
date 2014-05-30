@@ -29,7 +29,7 @@ class GalleryTest(unittest.TestCase):
     def setUp(self):
         super(GalleryTest,self).setUp()
         #Add on May 26th due to device always reboot by itself
-        if d(text = 'Charged').wait.exists:
+        if d(text = 'Charged').wait.exists(timeout = 2000):
             commands.getoutput('adb root')
             time.sleep(5)
             commands.getoutput('adb remount')
