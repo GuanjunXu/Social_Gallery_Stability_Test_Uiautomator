@@ -51,7 +51,9 @@ class GalleryTest(unittest.TestCase):
             finally:
                 d(text = 'Always').click.wait()
         time.sleep(10) #Play video file 10 s
-        u.showPopCard() #Invoke pop card
+        d.click(350,100) #Invoke pop card
+        d.click(350,100) #Invoke pop card
+        assert d(description = 'Share').wait.exists(timeout = 5000)
         u.tapOnCenter() #Pause the video playback
         assert d(resourceId = 'com.intel.android.gallery3d:id/background_play_action_provider_button').wait.exists(timeout = 2000)
 
@@ -67,7 +69,6 @@ class GalleryTest(unittest.TestCase):
             d(resourceId = 'android:id/text1').click.wait()
             d(text = 'OK').click.wait()
         assert d(text = 'Upload').wait.exists(timeout = 2000)
-
 
 
 
