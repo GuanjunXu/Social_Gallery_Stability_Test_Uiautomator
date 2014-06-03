@@ -83,8 +83,8 @@ class Util():
         time.sleep(2)
         #Confirm gallery launch successfully by the icon on left-top corner
         #assert d(packageName = PACKAGE_NAME).wait.exists(timeout = 3000), 'Gallery launch failed'
-        if d(description = 'Camera Roll, drawer open').wait.exists(timeout = 3000):
-            d(description = 'Camera Roll, drawer open').click.wait()
+        if d(text = 'Camera Roll').wait.exists(timeout = 3000):
+            d(text = 'Camera Roll').click.wait()
             d(text = 'Albums').click.wait()
         time.sleep(2)
 
