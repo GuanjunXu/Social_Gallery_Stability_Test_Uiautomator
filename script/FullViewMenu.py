@@ -17,6 +17,9 @@ ACTIVITY_NAME = PACKAGE_NAME + '/.app.Gallery'
 class GalleryTest(unittest.TestCase):
     def setUp(self):
         super(GalleryTest,self).setUp()
+        commands.getoutput("adb root")
+        time.sleep(5)
+        commands.getoutput("adb remount")
         u._clearAllResource()
         u._confirmResourceExists()
         u.launchGallery()
