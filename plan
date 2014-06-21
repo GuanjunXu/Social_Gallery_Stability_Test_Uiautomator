@@ -1,11 +1,11 @@
 [tests]
+script.FullViewMenu.GalleryTest.testCropThePhoto = 50
+script.FullView.GalleryTest.testSharePictureToMessaging = 50
+script.FullView.GalleryTest.testSharePictureToGmail = 50
 script.FullViewMenu.GalleryTest.testAddKeyWords = 50
 script.FullViewMenu.GalleryTest.testAddEvent = 50
 script.FullViewMenu.GalleryTest.testAddVenue = 50
 script.FullViewMenu.GalleryTest.testCheckDetail = 50
-script.FullViewMenu.GalleryTest.testCropThePhoto = 50
-script.FullView.GalleryTest.testSharePictureToMessaging = 50
-script.FullView.GalleryTest.testSharePictureToGmail = 50
 script.FullView.GalleryTest.testDeleteSingle = 50
 script.FullView.GalleryTest.testSlidePictures = 50
 script.FullViewVideo.GalleryTest.testPlayVideoFile = 50
@@ -16,7 +16,6 @@ script.FullViewEdit.GalleryTest.testEditWithBrightnessWithExposure = 50
 script.FullViewEdit.GalleryTest.testEditWithTonePunchRedoAndUndo = 50
 script.FullViewEdit.GalleryTest.testEditWithTonePunchReset = 50
 script.FullViewEdit.GalleryTest.testEditWithTonePunchShowHistory = 50
-
 script.albumview.GalleryTest.testSwitchGalleryToCamera = 50
 script.albumview.GalleryTest.testAlbumsViewSwitchtoEvents = 50
 script.albumview.GalleryTest.testAlbumsViewSwitchtoPeople = 50
@@ -26,15 +25,13 @@ script.albumview.GalleryTest.testCheckAlbumDetail = 50
 script.albumview.GalleryTest.testDeleteAlbum = 50
 script.albumview.GalleryTest.testCancelDeleteAllAlbum = 50
 script.albumview.GalleryTest.testShareAlbumViaBluetooth = 50
-
-script.gridview.GalleryTest.testSelectDeselectAllAlbums = 50
+script.albumview.GalleryTest.testSelectDeselectAllAlbums = 50
 script.gridview.GalleryTest.testSlideshowAllInGridView = 50
 script.gridview.GalleryTest.testRotateAllInGridView = 50
 script.gridview.GalleryTest.testAnimateInGridView = 50
 script.gridview.GalleryTest.testCropInGridView = 50
 script.gridview.GalleryTest.testSetPictureAsContactPhotoInGridView = 50
 script.gridview.GalleryTest.testSetPictureAsWallpaperInGridView = 50
-
 script.burstview.GalleryTest.testDeleteBurstPics = 50
 script.burstview.GalleryTest.testAddVenue = 50
 script.burstview.GalleryTest.testAddEvent = 50
